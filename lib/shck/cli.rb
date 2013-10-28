@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'optparse'
+require 'yaml'
 
 module Shck
   # command line interface
@@ -12,7 +13,8 @@ module Shck
 
     def run(args = ARGV)
       parse_option
-      config = ConfigLoader.new(File.expand_path('~/.shck.yml'))
+      yml = YAML.load_file(File.expand_path('~/.shck.yml'))
+      config = ConfigLoader.new(yml)
 
       case @options[:mode]
       when 'h'

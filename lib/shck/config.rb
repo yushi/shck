@@ -1,16 +1,9 @@
 # -*- coding: utf-8 -*-
-require 'yaml'
-
 module Shck
   # config file loader
   class ConfigLoader
-    def initialize(path = nil)
-      @yml = {}
-      load(path) if path
-    end
-
-    def load(path)
-      @yml = YAML.load_file(path)
+    def initialize(yml)
+      @yml = yml
     end
 
     def hosts
@@ -19,9 +12,6 @@ module Shck
 
     def groups
       @yml['group']
-    end
-
-    def group_hosts
     end
 
     def definitions
