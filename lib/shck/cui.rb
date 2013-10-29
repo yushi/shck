@@ -131,8 +131,8 @@ module Shck
       when Curses::KEY_CTRL_P then select_up
       when Curses::KEY_CTRL_I then switch_mode # TAB
       when 27 then quit # ESC
-      when 10 then do_open # ENTER
-      when 127, Curses::KEY_CTRL_H # BS
+      when KEY_CTRL_J then do_open # ENTER
+      when 127, Curses::KEY_CTRL_H, KEY_BACKSPACE # BS
         @pos -= 1
         @input.slice!(@pos)
       end
